@@ -6,9 +6,10 @@ This service is built using django and react. This respository contains only the
 The backend uses BioPython to query Blast for performing the alignments given the set of genomes to search.
 
 Newly added: 
-The startup speed of the application is now increased by moving converting accession IDs to organism names to a separate script, that will only be run once. 
-requirements.txt is modified to resolve dependency issues 
-a worker queue is created to run async operations and place less pressure on the backend server
+* The startup speed of the application is now increased by moving converting accession IDs to organism names to a separate script, that will only be run once. 
+* requirements.txt is modified to resolve dependency issues 
+* a worker queue is created to run async operations and place less pressure on the backend server
+* the tool now uses redisLite, which is compatible with pythonanywhere
 
 
 Design considerations: 
