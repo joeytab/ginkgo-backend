@@ -1,5 +1,5 @@
-from Bio.Blast import NCBIWWW, NCBIXML 
-import Bio.Align as algn 
+from Bio.Blast import NCBIWWW, NCBIXML
+import Bio.Align as algn
 import Bio.Entrez as ent
 from Bio import SeqIO
 from Bio.Seq import Seq
@@ -25,7 +25,7 @@ ent.email="jbanerje@caltech.edu"
 #     record = q.enqueue(SeqIO.read(handle, "genbank"))
 #     name = record.description.split(',')[0]
 #     organisms.append(name)
-f = open("nt_search/organisms.txt")
+f = open("/home/jbanerjee02/ginkgo-backend/nt_search/organisms.txt")
 organisms = f.read().splitlines()
 
 def print_alignments(blast_record):
@@ -39,7 +39,7 @@ def print_alignments(blast_record):
                 info["query"] = hsp.query[0:75]
                 info["match"] = hsp.match[0:75]
                 info["subject"] = hsp.sbjct[0:75]
-    return info 
+    return info
 def searchSeq(seq):
     print("entered " + seq)
     for name in organisms:
