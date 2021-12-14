@@ -1,12 +1,12 @@
 from django.shortcuts import render
 from .models import Response
-from .serializers import ResponseSerializer 
+from .serializers import ResponseSerializer
 from rest_framework import viewsets
 from django.http import HttpResponse
 from django.views.generic import View
 import json
 import os
-import sys 
+import sys
 import time
 
 from rq import Queue
@@ -39,7 +39,8 @@ class ResponseView(viewsets.ViewSet):
         self.queryset = Response.objects.values()
         job = q.enqueue(searchSeq, args = (sequence,), job_timeout = 600)
         HttpResponse("Waiting...")
-        time.sleep(100)
+        while(job.result == None):
+            time.sleep(10)
         responses = job.result
         # responses = searchSeq(self.queryset[0]['sequence'])
         print("got job result")
@@ -49,7 +50,7 @@ class ResponseView(viewsets.ViewSet):
         # http.headers['Access-Control-Allow-Headers'] = 'origin, content-type, accept'
         # http.headers['Access-Control-Allow-Origin'] = '*'
         # http.headers['Access-Control-Allow-Methods'] = "GET,POST,OPTIONS"
-        # return http 
+        # return http
     def django_models_json(request):
         responses = list(queryset)
         data = json.dumps(responses)
