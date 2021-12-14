@@ -134,13 +134,16 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ORIGIN_WHITELIST = [
      'https://ginkgo-frontend.herokuapp.com',
-     'http://ginkgo-frontend.herokuapp.com'
+     'http://ginkgo-frontend.herokuapp.com',
+     'https://joeytab.github.io/ginkgo-project/',
+     'http://joeytab.github.io/ginkgo-project/'
 
 ]
 CORS_ALLOW_METHODS = ['GET', 'POST', 'OPTIONS']
 CSRF_TRUSTED_ORIGINS = [
         'https://ginkgo-frontend.herokuapp.com/',
-     'http://ginkgo-frontend.herokuapp.com/'
+     'http://ginkgo-frontend.herokuapp.com/',
+
     ]
 
 

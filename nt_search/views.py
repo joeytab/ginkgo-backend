@@ -40,6 +40,7 @@ class ResponseView(viewsets.ViewSet):
         job = q.enqueue(searchSeq, args = (sequence,), job_timeout = 600)
         HttpResponse("Waiting...")
         while(job.result == None):
+            print("waiting...")
             time.sleep(10)
         responses = job.result
         # responses = searchSeq(self.queryset[0]['sequence'])
